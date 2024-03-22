@@ -94,28 +94,6 @@ fastifyApp.get('/', function (request, reply) {
     fastifyApp.log.debug('request: ', request)
     reply.send({ hello: 'world' })
 })
-// ---------------------------------
-// Apollo Server Setup
-// ---------------------------------
-// kodamaLogger.info('Loading legacy resolvers')
-// const legacyResolvers = loadFilesSync(
-//   'src/connections/legacy_db/resolvers/**/*.js',
-// )
-//
-// kodamaLogger.info('Loading gen2 resolvers')
-// const resolvers = loadFilesSync('src/connections/gen2_db/**/resolvers.js')
-// const mergedResolvers = mergeResolvers([
-//   ...(legacyResolvers as IResolvers[]),
-//   ...(resolvers as IResolvers[]),
-// ]) as IResolvers
-//
-// const schema = makeExecutableSchema({
-//   typeDefs: loadFilesSync([
-//     'src/typeDefs/**/*.graphql',
-//     'src/connections/gen2_db/**/types.graphql',
-//   ]),
-//   resolvers: mergedResolvers,
-// })
 
 const typeDefs = `#graphql
 type Book {
@@ -149,17 +127,6 @@ const apolloServer = new ApolloServer({
     typeDefs,
     resolvers,
 })
-// const createApolloServer = ({ typeDefs, resolvers }) => {
-//   return new ApolloServer({
-//     typeDefs,
-//     resolvers,
-//   })
-// }
-// kodamaLogger.info('Creating new ApolloServer')
-// const apolloServer = createApolloServer({
-//   typeDefs,
-//   resolvers,
-// })
 
 // ---------------------------------
 // Startup all the servers.
